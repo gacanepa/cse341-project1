@@ -5,7 +5,8 @@ const withClient = async (callback) => {
   const client = await connect();
   try {
     await callback(client);
-  } finally {
+  } catch (error) {
+    console.error(`Error connecting to the database: ${error}`);
     await client.close();
   }
 };
