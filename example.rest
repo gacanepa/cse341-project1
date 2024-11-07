@@ -1,0 +1,3 @@
+GET http://localhost:3001/contacts
+
+GET https://cse341-project1-jsno.onrender.com/contacts
