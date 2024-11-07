@@ -6,7 +6,7 @@ import { DEFAULT_COLLECTION, DEFAULT_DATABASE } from '../utilities/constants.js'
 // GET /contacts
 export const getAllContacts = async (req, res) => {
   withClient(async (client) => {
-    const cursor = await client.db(DEFAULT_COLLECTION).collection(DEFAULT_DATABASE).find()
+    const cursor = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).find();
     const result = await cursor.toArray();
     res.send(result).status(StatusCodes.OK);
   });
@@ -17,7 +17,7 @@ export const getContactById = async (req, res) => {
   // To address the deprecation issue, I use ObjectId.createFromHexString instead of the ObjectId constructor.
   const userId = ObjectId.createFromHexString(req.params.id);
   withClient(async (client) => {
-    const result = await client.db(DEFAULT_COLLECTION).collection(DEFAULT_DATABASE).findOne({ _id: userId });
+    const result = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).findOne({ _id: userId });
     res.send(result).status(StatusCodes.OK);
   });
 };
