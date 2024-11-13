@@ -15,5 +15,10 @@
     "http-status-codes": "^2.3.0",
     "mongodb": "^6.10.0"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "eslint": "^9.14.0",
+    "globals": "^15.12.0"
+  }
 }
