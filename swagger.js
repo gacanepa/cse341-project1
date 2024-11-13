@@ -5,7 +5,9 @@ const doc = {
     title: 'My Contacts API',
     description: 'Contacts Management - BYU-I CSE341 Fall 2024'
   },
-  host: 'localhost:3001'
+  host: 'localhost:3001',
+  basePath: '/contacts',
+  produces: ['application/json'],
 };
 
 const outputFile = './swagger-output.json';
