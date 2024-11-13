@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "swagger": "node ./swagger.js"
   },
   "keywords": [],
   "author": "Gabriel Cánepa",
@@ -13,7 +14,8 @@
   "dependencies": {
     "express": "^4.21.1",
     "http-status-codes": "^2.3.0",
-    "mongodb": "^6.10.0"
+    "mongodb": "^6.10.0",
+    "swagger-ui-express": "^5.0.1"
   },
   "type": "module",
   "devDependencies": {
