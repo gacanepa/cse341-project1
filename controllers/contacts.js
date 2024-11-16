@@ -25,7 +25,10 @@ export const getContactById = async (req, res) => {
 // POST /contacts
 export const createContact = async (req, res) => {
   withClient(async (client) => {
-    const result = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).insertOne(req.body);
+    const result = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).insertOne({
+      ...req.body,
+      isDeleted: false,
+    });
     res.send(result).status(StatusCodes.CREATED);
   });
 };
