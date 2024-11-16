@@ -1,7 +1,11 @@
 import { ObjectId } from 'mongodb';
 import { StatusCodes } from 'http-status-codes';
 import withClient from '../data/connectionManager.js';
-import { DEFAULT_COLLECTION, DEFAULT_DATABASE } from '../utilities/constants.js';
+import {
+  DEFAULT_COLLECTION,
+  DEFAULT_DATABASE,
+  MISSING_MANDATORY_FIELDS,
+} from '../utilities/constants.js';
 
 // GET /contacts
 export const getAllContacts = async (req, res) => {
@@ -25,6 +29,18 @@ export const getContactById = async (req, res) => {
 // POST /contacts
 export const createContact = async (req, res) => {
   withClient(async (client) => {
+    // Mandatory fields
+    const {
+      firstName,
+      lastName,
+      email,
+      favoriteColor,
+      birthday,
+    } = req.body;
+    if (!firstName || !lastName || !email || !favoriteColor || !birthday) {
+      res.send(MISSING_MANDATORY_FIELDS).status(StatusCodes.BAD_REQUEST);
+      return;
+    }
     const result = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).insertOne({
       ...req.body,
       isDeleted: false,
