@@ -5,6 +5,9 @@ import docsRoutes from './routes/docs.js';
 
 const app = express();
 
+// Request bodies will be sent as JSON
+app.use(express.json());
+
 const port = process.env.PORT || 3001;
 
 app.use('/', indexRoutes);

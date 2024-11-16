@@ -1,0 +1,10 @@
+PUT http://localhost:3001/contacts/6738c9e6e77b0bf34a4318fd
+Content-Type: application/json
+
+{
+  "firstName": "Peter",
+  "lastName": "Mitchell",
+  "email": "peter.mitchell@example.com",
+  "favoriteColor": "blue",
+  "birthday": "August 13"
+}
