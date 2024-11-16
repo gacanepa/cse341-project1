@@ -10,7 +10,9 @@ import {
 // GET /contacts
 export const getAllContacts = async (req, res) => {
   withClient(async (client) => {
-    const cursor = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).find();
+    const cursor = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).find({
+      isDeleted: false,
+    });
     const result = await cursor.toArray();
     res.send(result).status(StatusCodes.OK);
   });
@@ -21,7 +23,10 @@ export const getContactById = async (req, res) => {
   // To address the deprecation issue, I use ObjectId.createFromHexString instead of the ObjectId constructor.
   const userId = ObjectId.createFromHexString(req.params.id);
   withClient(async (client) => {
-    const result = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).findOne({ _id: userId });
+    const result = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).findOne({
+      _id: userId,
+      isDelete: false,
+    });
     res.send(result).status(StatusCodes.OK);
   });
 };
