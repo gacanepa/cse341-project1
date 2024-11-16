@@ -5,6 +5,9 @@ import docsRoutes from './routes/docs.js';
 
 const app = express();
 
+// Hide internal technical information
+app.disable('x-powered-by');
+
 // Request bodies will be sent as JSON
 app.use(express.json());
 
