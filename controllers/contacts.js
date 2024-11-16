@@ -58,7 +58,28 @@ export const createContact = async (req, res) => {
 export const updateContact = async (req, res) => {
   const userId = ObjectId.createFromHexString(req.params.id);
   withClient(async (client) => {
-    const result = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).updateOne({ _id: userId }, { $set: req.body });
+    // One of the mandatory fields
+    const {
+      firstName,
+      lastName,
+      email,
+      favoriteColor,
+      birthday,
+    } = req.body;
+
+    const updateFields = {};
+
+    if (firstName) updateFields.firstName = firstName;
+    if (lastName) updateFields.lastName = lastName;
+    if (email) updateFields.email = email;
+    if (favoriteColor) updateFields.favoriteColor = favoriteColor;
+    if (birthday) updateFields.birthday = birthday;
+
+    const result = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).updateOne({
+      _id: userId
+    }, {
+      $set: updateFields
+    });
     res.send(result).status(StatusCodes.OK);
   });
 };
