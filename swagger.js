@@ -8,6 +8,7 @@ const doc = {
   host: 'https://cse341-project1-jsno.onrender.com',
   basePath: '/contacts',
   produces: ['application/json'],
+  schemes: ['https'],
 };
 
 const outputFile = './swagger-output.json';
