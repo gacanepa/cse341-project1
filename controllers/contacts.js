@@ -25,7 +25,7 @@ export const getContactById = async (req, res) => {
   withClient(async (client) => {
     const result = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).findOne({
       _id: userId,
-      isDelete: false,
+      isDeleted: false,
     });
     res.send(result).status(StatusCodes.OK);
   });
