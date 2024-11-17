@@ -8,7 +8,7 @@
   "host": "https://cse341-project1-jsno.onrender.com",
   "basePath": "/contacts",
   "schemes": [
-    "http"
+    "https"
   ],
   "produces": [
     "application/json"
