@@ -5,7 +5,7 @@ const doc = {
     title: 'My Contacts API',
     description: 'Contacts Management - BYU-I CSE341 Fall 2024'
   },
-  host: 'localhost:3001',
+  host: 'https://cse341-project1-jsno.onrender.com',
   basePath: '/contacts',
   produces: ['application/json'],
 };
