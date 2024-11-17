@@ -5,7 +5,7 @@
     "description": "Contacts Management - BYU-I CSE341 Fall 2024",
     "version": "1.0.0"
   },
-  "host": "https://cse341-project1-jsno.onrender.com",
+  "host": "cse341-project1-jsno.onrender.com",
   "basePath": "/contacts",
   "schemes": [
     "https"
