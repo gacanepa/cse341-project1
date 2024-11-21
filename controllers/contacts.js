@@ -13,8 +13,14 @@ export const getAllContacts = async (req, res) => {
     const cursor = await client.db(DEFAULT_DATABASE).collection(DEFAULT_COLLECTION).find({
       isDeleted: false,
     });
-    const result = await cursor.toArray();
-    res.send(result).status(StatusCodes.OK);
+    try {
+      const result = await cursor.toArray();
+      res.status(StatusCodes.OK).json(result);
+    } catch (error) {
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ 
+        message: error.message,
+      });
+    }
   });
 };
 
