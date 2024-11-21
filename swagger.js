@@ -5,10 +5,10 @@ const doc = {
     title: 'My Contacts API',
     description: 'Contacts Management - BYU-I CSE341 Fall 2024'
   },
-  host: 'cse341-project1-jsno.onrender.com',
+  host: 'localhost:3001',
   basePath: '/contacts',
   produces: ['application/json'],
-  schemes: ['https'],
+  schemes: ['http'],
 };
 
 const outputFile = './swagger-output.json';
